@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumeer Peta — Senior Technology Leader</title>
+  <meta name="description" content="Sumeer Basha Peta — Senior Technology Leader specializing in MarTech, AI/ML, Composable Architecture, and Digital Customer Experience. Sr. Director at The Home Depot.">
+  <meta name="author" content="Sumeer Basha Peta">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sumeer Peta — Senior Technology Leader">
+  <meta property="og:description" content="Technology executive driving digital transformation with AI-powered platforms, MarTech, and enterprise CMS architectures.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sumeerpeta.com">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar-root"></div>
+
+  <!-- Hero -->
+  <div id="hero-root"></div>
+
+  <!-- Section Cards -->
+  <div id="sections-root"></div>
+
+  <!-- Footer -->
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="js/data/siteData.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/hero.js"></script>
+  <script src="js/components/sectionCard.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    renderNavbar('navbar-root', 'index.html');
+    renderHero('hero-root');
+    renderSectionCards('sections-root');
+    renderFooter('footer-root');
+  </script>
+</body>
+</html>

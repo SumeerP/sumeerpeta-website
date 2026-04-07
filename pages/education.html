@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education — Sumeer Peta</title>
+  <meta name="description" content="Education background of Sumeer Basha Peta — MS Computer Science (4.0 GPA) from SIUE and BE from Osmania University.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+  <div id="page-header-root"></div>
+
+  <main class="page-content" id="education-content"></main>
+
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data/siteData.js"></script>
+  <script src="../js/components/navbar.js"></script>
+  <script src="../js/components/pageHeader.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    renderNavbar('navbar-root', 'pages/education.html');
+    renderPageHeader('page-header-root', {
+      title: 'Education',
+      subtitle: 'Academic foundation in Computer Science and Software Engineering.',
+    });
+    renderFooter('footer-root', true);
+
+    // Render education cards
+    (function() {
+      const container = document.getElementById('education-content');
+      const { education } = siteData;
+
+      const cards = education.map((edu, i) => `
+        <div class="education-card reveal" style="transition-delay: ${i * 0.1}s">
+          <div class="education-card__icon">${edu.icon}</div>
+          <div>
+            <h3 class="education-card__degree">${edu.degree}</h3>
+            <p class="education-card__school">${edu.school}</p>
+            <p class="education-card__meta">
+              📍 ${edu.location} · 📅 ${edu.dates}
+              ${edu.gpa ? ` · 🎯 GPA: ${edu.gpa}` : ''}
+            </p>
+            <p class="education-card__description">${edu.description}</p>
+          </div>
+        </div>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="education-list">
+          ${cards}
+        </div>
+      `;
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certifications — Sumeer Peta</title>
+  <meta name="description" content="Professional certifications held by Sumeer Basha Peta in Adobe, AWS, Google Cloud, and enterprise architecture.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+  <div id="page-header-root"></div>
+
+  <main class="page-content" id="certifications-content"></main>
+
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data/siteData.js"></script>
+  <script src="../js/components/navbar.js"></script>
+  <script src="../js/components/pageHeader.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    renderNavbar('navbar-root', 'pages/certifications.html');
+    renderPageHeader('page-header-root', {
+      title: 'Certifications',
+      subtitle: 'Professional certifications in cloud platforms, AI, and enterprise architecture.',
+    });
+    renderFooter('footer-root', true);
+
+    // Render certifications
+    (function() {
+      const container = document.getElementById('certifications-content');
+      const { certifications } = siteData;
+
+      const cards = certifications.map((cert, i) => `
+        <div class="info-card reveal" style="transition-delay: ${i * 0.08}s">
+          <div class="info-card__icon">${cert.icon}</div>
+          <h3 class="info-card__title">${cert.name}</h3>
+          <p class="info-card__subtitle">${cert.issuer}</p>
+          ${cert.year ? `<div class="info-card__meta"><span>📅 ${cert.year}</span></div>` : ''}
+        </div>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="card-grid">
+          ${cards}
+        </div>
+      `;
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Sumeer Peta</title>
+  <meta name="description" content="Connect with Sumeer Basha Peta — Senior Technology Leader specializing in MarTech, AI, and digital transformation.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    .contact-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+    .contact-card:hover {
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .contact-card__icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-4);
+    }
+    .contact-card__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      color: var(--color-text-heading);
+      margin-bottom: var(--space-3);
+    }
+    .contact-card__text {
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-6);
+      line-height: var(--leading-relaxed);
+    }
+    .contact-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-root"></div>
+  <div id="page-header-root"></div>
+
+  <main class="page-content" id="contact-content">
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="contact-card__icon">💼</div>
+        <h3 class="contact-card__title">LinkedIn</h3>
+        <p class="contact-card__text">Let's connect professionally. I'm always open to discussing technology leadership, digital transformation, and industry insights.</p>
+        <a href="https://www.linkedin.com/in/sumeerpeta/" class="btn btn--primary" target="_blank" rel="noopener noreferrer" id="contact-linkedin-btn">Connect on LinkedIn</a>
+      </div>
+      <div class="contact-card reveal" style="transition-delay: 0.1s">
+        <div class="contact-card__icon">📚</div>
+        <h3 class="contact-card__title">Google Scholar</h3>
+        <p class="contact-card__text">Explore my published research in AI, cloud computing, healthcare, and digital transformation with 42+ citations.</p>
+        <a href="https://scholar.google.com/citations?user=YOUR_ID" class="btn btn--outline" target="_blank" rel="noopener noreferrer" id="contact-scholar-btn">View Publications</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data/siteData.js"></script>
+  <script src="../js/components/navbar.js"></script>
+  <script src="../js/components/pageHeader.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    renderNavbar('navbar-root', 'pages/contact.html');
+    renderPageHeader('page-header-root', {
+      title: 'Contact',
+      subtitle: 'Get in touch — I\'m always interested in connecting with fellow technology leaders and researchers.',
+    });
+    renderFooter('footer-root', true);
+  </script>
+</body>
+</html>

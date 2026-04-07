@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awards & Recognition — Sumeer Peta</title>
+  <meta name="description" content="Awards and recognitions earned by Sumeer Basha Peta for technology leadership and innovation.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+  <div id="page-header-root"></div>
+
+  <main class="page-content" id="awards-content"></main>
+
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data/siteData.js"></script>
+  <script src="../js/components/navbar.js"></script>
+  <script src="../js/components/pageHeader.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    renderNavbar('navbar-root', 'pages/awards.html');
+    renderPageHeader('page-header-root', {
+      title: 'Awards & Recognition',
+      subtitle: 'Honors for technology leadership, research excellence, and industry contributions.',
+    });
+    renderFooter('footer-root', true);
+
+    // Render awards
+    (function() {
+      const container = document.getElementById('awards-content');
+      const { awards } = siteData;
+
+      const cards = awards.map((award, i) => `
+        <div class="info-card reveal" style="transition-delay: ${i * 0.08}s">
+          <div class="info-card__icon">${award.icon}</div>
+          <h3 class="info-card__title">${award.name}</h3>
+          <p class="info-card__subtitle">${award.organization}</p>
+          <p class="info-card__text">${award.description}</p>
+          ${award.year ? `<div class="info-card__meta"><span>📅 ${award.year}</span></div>` : ''}
+        </div>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="card-grid">
+          ${cards}
+        </div>
+      `;
+    })();
+  </script>
+</body>
+</html>

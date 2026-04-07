@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications — Sumeer Peta</title>
+  <meta name="description" content="Research publications by Sumeer Basha Peta — 42+ citations, h-index 4. Research in AI, federated learning, healthcare, and cloud architectures.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+  <div id="page-header-root"></div>
+
+  <main class="page-content" id="publications-content"></main>
+
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data/siteData.js"></script>
+  <script src="../js/components/navbar.js"></script>
+  <script src="../js/components/pageHeader.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    renderNavbar('navbar-root', 'pages/publications.html');
+    renderPageHeader('page-header-root', {
+      title: 'Research & Publications',
+      subtitle: 'Peer-reviewed research in AI, cloud computing, healthcare, and digital transformation.',
+    });
+    renderFooter('footer-root', true);
+
+    // Render publications
+    (function() {
+      const container = document.getElementById('publications-content');
+      const { publications } = siteData;
+
+      // Stats bar
+      const statsHtml = `
+        <div class="stats-bar reveal">
+          <div class="stat">
+            <div class="stat__value">${publications.stats.totalCitations}</div>
+            <div class="stat__label">Total Citations</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">${publications.stats.hIndex}</div>
+            <div class="stat__label">h-index</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">${publications.stats.i10Index}</div>
+            <div class="stat__label">i10-index</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">${publications.papers.length}</div>
+            <div class="stat__label">Publications</div>
+          </div>
+        </div>
+      `;
+
+      // Paper cards
+      const papers = publications.papers.map((paper, i) => {
+        const tags = paper.tags
+          ? paper.tags.map(t => `<span class="info-card__tag">${t}</span>`).join(' ')
+          : '';
+
+        return `
+          <div class="info-card reveal" style="transition-delay: ${i * 0.08}s">
+            <div class="info-card__icon">📄</div>
+            <h3 class="info-card__title">${paper.title}</h3>
+            <p class="info-card__subtitle">${paper.authors}</p>
+            <p class="info-card__text">${paper.venue}</p>
+            <div class="info-card__meta">
+              <span>📅 ${paper.year}</span>
+              <span>📊 ${paper.citations} citations</span>
+            </div>
+            ${tags ? `<div style="margin-top: var(--space-3); display: flex; flex-wrap: wrap; gap: var(--space-2);">${tags}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        ${statsHtml}
+        <div class="card-grid" style="margin-top: var(--space-8);">
+          ${papers}
+        </div>
+      `;
+    })();
+  </script>
+</body>
+</html>

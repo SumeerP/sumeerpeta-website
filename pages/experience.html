@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Experience — Sumeer Peta</title>
+  <meta name="description" content="Professional experience timeline of Sumeer Basha Peta — senior technology roles at The Home Depot, CVS Health, Adobe, and SapientNitro.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div id="navbar-root"></div>
+  <div id="page-header-root"></div>
+
+  <main class="page-content" id="experience-content"></main>
+
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data/siteData.js"></script>
+  <script src="../js/components/navbar.js"></script>
+  <script src="../js/components/pageHeader.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    renderNavbar('navbar-root', 'pages/experience.html');
+    renderPageHeader('page-header-root', {
+      title: 'Professional Experience',
+      subtitle: 'A decade of technology leadership across Healthcare, Retail, and Financial services.',
+    });
+    renderFooter('footer-root', true);
+
+    // Render experience timeline
+    (function() {
+      const container = document.getElementById('experience-content');
+      const { experience } = siteData;
+
+      const items = experience.map((job, i) => {
+        const highlights = job.highlights
+          ? `<div class="timeline__highlights">
+              ${job.highlights.map(h => `<div class="timeline__highlight">${h}</div>`).join('')}
+             </div>`
+          : '';
+
+        return `
+          <div class="timeline__item reveal" style="transition-delay: ${i * 0.1}s">
+            <div class="timeline__dot"></div>
+            <div class="timeline__card">
+              <span class="timeline__date">📅 ${job.dates}</span>
+              <h3 class="timeline__role">${job.role}</h3>
+              <p class="timeline__company">${job.company}${job.department ? ' — ' + job.department : ''}</p>
+              <p class="timeline__description">${job.description}</p>
+              ${highlights}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="timeline">
+          ${items}
+        </div>
+      `;
+    })();
+  </script>
+</body>
+</html>
