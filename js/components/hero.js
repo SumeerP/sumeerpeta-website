@@ -22,8 +22,8 @@ function renderHero(containerId) {
     ? `<img src="${personalInfo.profileImage}" alt="${personalInfo.fullName}" class="hero__image" loading="eager">`
     : `<div class="hero__image-placeholder">
         <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="35" r="20" fill="rgba(0,212,170,0.3)" stroke="rgba(0,212,170,0.5)" stroke-width="2"/>
-          <path d="M15 85 C15 65 35 55 50 55 C65 55 85 65 85 85" fill="rgba(0,212,170,0.2)" stroke="rgba(0,212,170,0.4)" stroke-width="2"/>
+          <circle cx="50" cy="35" r="20" fill="rgba(230,126,34,0.3)" stroke="rgba(230,126,34,0.5)" stroke-width="2"/>
+          <path d="M15 85 C15 65 35 55 50 55 C65 55 85 65 85 85" fill="rgba(230,126,34,0.2)" stroke="rgba(230,126,34,0.4)" stroke-width="2"/>
         </svg>
        </div>`;
 

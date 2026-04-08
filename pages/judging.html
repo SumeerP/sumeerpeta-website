@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Judging & Peer Review — Sumeer Peta</title>
+  <meta name="description" content="Sumeer Basha Peta's judging roles at Globee Awards, Devpost, HackHarvard, and peer review contributions for IEEE conferences and Q1 journals.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+
+  <style>
+    .judging-section {
+      margin-bottom: var(--space-12);
+    }
+    .judging-section__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-heading);
+      margin-bottom: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .judging-section__title-accent {
+      width: 4px;
+      height: 28px;
+      background: var(--color-accent-gradient);
+      border-radius: var(--radius-full);
+    }
+    .judging-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .judging-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-6);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      transition: all var(--transition-base);
+    }
+    .judging-item:hover {
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-md);
+      transform: translateX(4px);
+    }
+    .judging-item__icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .judging-item__text {
+      color: var(--color-text-primary);
+      font-weight: var(--weight-medium);
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-root"></div>
+  <div id="page-header-root"></div>
+
+  <main class="page-content" id="judging-content"></main>
+
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data/siteData.js"></script>
+  <script src="../js/components/navbar.js"></script>
+  <script src="../js/components/pageHeader.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    renderNavbar('navbar-root', 'pages/judging.html');
+    renderPageHeader('page-header-root', {
+      title: 'Judging & Peer Review',
+      subtitle: 'Serving as judge for international awards, hackathons, and peer reviewer for conferences and scholarly journals.',
+    });
+    renderFooter('footer-root', true);
+
+    (function() {
+      const container = document.getElementById('judging-content');
+      const { judging } = siteData;
+
+      function renderSection(title, items, isObjectArray = true) {
+        const listItems = items.map((item, i) => {
+          const icon = isObjectArray ? (item.icon || '📋') : '📋';
+          const text = isObjectArray ? item.name : item;
+          return `
+            <div class="judging-item reveal" style="transition-delay: ${i * 0.06}s">
+              <span class="judging-item__icon">${icon}</span>
+              <span class="judging-item__text">${text}</span>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="judging-section">
+            <h2 class="judging-section__title">
+              <span class="judging-section__title-accent"></span>
+              ${title}
+            </h2>
+            <div class="judging-list">${listItems}</div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = `
+        ${renderSection('Awards Judging', judging.awards)}
+        ${renderSection('Hackathon Judging', judging.hackathons)}
+        ${renderSection('Peer Review', judging.peerReview, false)}
+        ${renderSection('Session Chair', judging.sessionChair.map(s => ({ name: s, icon: '🎤' })))}
+        ${renderSection('Book Chapters Review', judging.bookReview.map(b => ({ name: b, icon: '📖' })))}
+      `;
+    })();
+  </script>
+</body>
+</html>

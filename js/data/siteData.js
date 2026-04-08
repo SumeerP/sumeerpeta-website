@@ -2,21 +2,9 @@
  * siteData.js — Central data store for the entire portfolio.
  *
  * HOW TO UPDATE CONTENT:
- * 1. Edit the relevant section below (e.g., add a new job to `experience`)
+ * 1. Edit the relevant section below (e.g., add a new award to `awards`)
  * 2. Save the file — changes appear immediately on page reload
  * 3. No HTML editing required
- *
- * DATA SCHEMA:
- * - personalInfo: Core identity (name, title, bio, links)
- * - navigation:   Menu items (label, href, icon)
- * - heroContent:  Home page hero section
- * - sections:     Home page summary cards
- * - experience:   Professional timeline
- * - education:    Academic background
- * - certifications: Professional certifications
- * - awards:       Awards & recognition
- * - publications: Research papers & articles
- * - skills:       Technical skill areas
  */
 
 const siteData = {
@@ -31,8 +19,8 @@ const siteData = {
     title: "Senior Technology Leader",
     tagline: "Sr. Director, Technology — Retail Media, Marketing & Data Platforms",
     location: "Acton, Massachusetts",
-    email: "", // Add your email if you want
-    profileImage: null, // Replace with path: "assets/images/profile.jpg"
+    email: "",
+    profileImage: null, // Replace with: "assets/images/profile.jpg"
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/sumeerpeta/",
     },
@@ -43,13 +31,14 @@ const siteData = {
      NAVIGATION
      ──────────────────────────────────────────────────────────────────────── */
   navigation: [
-    { label: "Home",            href: "index.html" },
-    { label: "Experience",      href: "pages/experience.html" },
-    { label: "Education",       href: "pages/education.html" },
-    { label: "Publications",    href: "pages/publications.html" },
-    { label: "Certifications",  href: "pages/certifications.html" },
-    { label: "Awards",          href: "pages/awards.html" },
-    { label: "Contact",         href: "pages/contact.html" },
+    { label: "Home",           href: "index.html" },
+    { label: "Experience",     href: "pages/experience.html" },
+    { label: "Education",      href: "pages/education.html" },
+    { label: "Publications",   href: "pages/publications.html" },
+    { label: "Awards",         href: "pages/awards.html" },
+    { label: "Judging",        href: "pages/judging.html" },
+    { label: "Mentoring",      href: "pages/mentoring.html" },
+    { label: "Contact",        href: "pages/contact.html" },
   ],
 
   /* ────────────────────────────────────────────────────────────────────────
@@ -86,6 +75,27 @@ const siteData = {
       linkText: "View full experience",
     },
     {
+      icon: "🏆",
+      title: "Awards & Recognition",
+      description: "Multiple Globee Gold, Titan Gold/Platinum, and other prestigious awards recognizing excellence in information technology, customer experience, and technical leadership.",
+      link: "pages/awards.html",
+      linkText: "View all awards",
+    },
+    {
+      icon: "📚",
+      title: "Research & Publications",
+      description: "Published researcher with 42+ citations and h-index of 4. Research spans AI in healthcare, federated learning, cloud architectures, LLM evaluation, and real-time personalization in CMS. Author of a book published on Amazon.",
+      link: "pages/publications.html",
+      linkText: "View all publications",
+    },
+    {
+      icon: "⚖️",
+      title: "Judging & Peer Review",
+      description: "Serves as judge for Globee Awards, Devpost Hackathons, and HackHarvard. Peer reviewer for Q1 journals, Google Scholar journals, and 15+ IEEE conference papers. Session Chair at International Conference of Emerging Technology.",
+      link: "pages/judging.html",
+      linkText: "View judging roles",
+    },
+    {
       icon: "🎓",
       title: "Education",
       description: "Master of Science in Computer Science from Southern Illinois University Edwardsville (GPA 4.0/4.0), and Bachelor of Engineering from Osmania University.",
@@ -93,25 +103,11 @@ const siteData = {
       linkText: "View education details",
     },
     {
-      icon: "📚",
-      title: "Research & Publications",
-      description: "Published researcher with 42+ citations and h-index of 4. Research focuses on AI in healthcare, federated learning, cloud architectures, and real-time personalization in content management systems.",
-      link: "pages/publications.html",
-      linkText: "View all publications",
-    },
-    {
-      icon: "🏅",
-      title: "Certifications",
-      description: "Diverse array of certifications in AI, cloud computing, digital transformation, and enterprise architecture from leading organizations including Adobe, AWS, and Google.",
-      link: "pages/certifications.html",
-      linkText: "View all certifications",
-    },
-    {
-      icon: "🏆",
-      title: "Awards & Recognition",
-      description: "Recognized as a thought leader in technology innovation, with contributions to peer-reviewed journals, conference keynotes, and industry publications.",
-      link: "pages/awards.html",
-      linkText: "View awards",
+      icon: "🤝",
+      title: "Memberships & Mentoring",
+      description: "Fellow of Soft Computing Research Society, IETE, and BCS. Senior Member of IEEE. ADP Top Mentor and HackHarvard Mentor. Book chapters reviewer for Manning Publishers.",
+      link: "pages/mentoring.html",
+      linkText: "View details",
     },
     {
       icon: "⚡",
@@ -221,13 +217,19 @@ const siteData = {
   ],
 
   /* ────────────────────────────────────────────────────────────────────────
-     PUBLICATIONS (from Google Scholar)
+     PUBLICATIONS (from Google Scholar + EB1A PDF)
      ──────────────────────────────────────────────────────────────────────── */
   publications: {
     stats: {
       totalCitations: "42+",
       hIndex: 4,
       i10Index: 1,
+    },
+    bookAuthor: {
+      title: "Book Author",
+      description: "Published book available on Amazon.",
+      link: "https://www.amazon.com",
+      linkText: "View Book on Amazon",
     },
     papers: [
       {
@@ -236,6 +238,7 @@ const siteData = {
         venue: "2025 Global Conference on Emerging Technology (GINOTECH), 1-8",
         year: 2025,
         citations: 10,
+        role: "Co-Author",
         tags: ["Federated Learning", "Cloud", "Privacy"],
       },
       {
@@ -244,6 +247,7 @@ const siteData = {
         venue: "Authorea Preprints",
         year: 2024,
         citations: 8,
+        role: "Co-Author",
         tags: ["Healthcare", "Privacy", "HIPAA"],
       },
       {
@@ -252,6 +256,7 @@ const siteData = {
         venue: "International Conference on Metaverse and Current Trends in Computing (ICMCTC)",
         year: 2025,
         citations: 7,
+        role: "Co-Author",
         tags: ["LLM", "AI/ML", "NLP"],
       },
       {
@@ -260,6 +265,7 @@ const siteData = {
         venue: "2025 Global Conference on Emerging Technology (GINOTECH), 1-6",
         year: 2025,
         citations: 5,
+        role: "Co-Author",
         tags: ["Cloud Architecture", "Big Data"],
       },
       {
@@ -268,6 +274,7 @@ const siteData = {
         venue: "2025 International Conference on Computing Technologies (ICOCT), 1-7",
         year: 2025,
         citations: 4,
+        role: "Primary Author",
         tags: ["Personalization", "CMS", "Analytics"],
       },
       {
@@ -276,6 +283,7 @@ const siteData = {
         venue: "Sch J App Med Sci 8, 1558-1566",
         year: 2025,
         citations: 3,
+        role: "Co-Author",
         tags: ["LLM", "Healthcare", "AI"],
       },
       {
@@ -284,63 +292,132 @@ const siteData = {
         venue: "2025 Conference Publication",
         year: 2025,
         citations: 2,
+        role: "Co-Author",
         tags: ["Cloud", "AI", "Security"],
+      },
+      {
+        title: "Enhancing Smart City Infrastructures",
+        authors: "SB Peta (Primary Author)",
+        venue: "IEEE Conference",
+        year: 2025,
+        citations: 1,
+        role: "Primary Author",
+        tags: ["Smart Cities", "IoT"],
+      },
+      {
+        title: "AI for Code",
+        authors: "SB Peta et al.",
+        venue: "IEEE Conference",
+        year: 2025,
+        citations: 1,
+        role: "Co-Author",
+        tags: ["AI", "Software Engineering"],
+      },
+      {
+        title: "Privacy-Preserving Generative AI",
+        authors: "SB Peta et al.",
+        venue: "IEEE Conference",
+        year: 2025,
+        citations: 0,
+        role: "Co-Author",
+        tags: ["Generative AI", "Privacy"],
+      },
+    ],
+    journals: [
+      { title: "IJCNIS", role: "Primary Author" },
+      { title: "TechRxiv", role: "Co-Author" },
+      { title: "Sch J App Med Sci", role: "Co-Author" },
+      { title: "Sch J Eng Tech", role: "Co-Author" },
+    ],
+    recognition: [
+      "Best paper announced at IEEE International Conference",
+      "Outstanding contributions recognized at CCWC 2026",
+      "Four research teams win best paper awards at IEEE WCONF 2025",
+      "IEEE I2ITCON 2025 recognizes cutting-edge research",
+    ],
+  },
+
+  /* ────────────────────────────────────────────────────────────────────────
+     AWARDS & RECOGNITION (from EB1A PDF)
+     ──────────────────────────────────────────────────────────────────────── */
+  awards: {
+    categories: [
+      {
+        name: "Globee Awards — Technology",
+        items: [
+          { name: "IT Professional of the Year", level: "Bronze" },
+          { name: "Professional of the Year | IT Software", level: "Bronze" },
+          { name: "Customer Experience Champion", level: "Gold" },
+          { name: "Achievement in Multichannel Support", level: "Gold" },
+          { name: "Customer Service Engagement Individual of the Year", level: "Gold" },
+          { name: "Creative Mind for Customer Excellence", level: "Gold" },
+          { name: "Lifetime Achievement in Customer Excellence", level: "Bronze" },
+        ],
+      },
+      {
+        name: "Globee Golden Bridge Awards",
+        items: [
+          { name: "Information Technology Engineer of the Year", level: "Bronze" },
+          { name: "Information Technology Professional of the Year", level: "Gold" },
+        ],
+      },
+      {
+        name: "Titan Awards",
+        items: [
+          { name: "Information Technology — Technical Professional of the Year", level: "Gold" },
+          { name: "Business Technology Solutions — Technology Professional of the Year", level: "Silver" },
+          { name: "Business Technology Solutions — Content Management Solution", level: "Silver" },
+        ],
       },
     ],
   },
 
   /* ────────────────────────────────────────────────────────────────────────
-     CERTIFICATIONS
-     Add your actual certifications here.
+     MEMBERSHIPS
      ──────────────────────────────────────────────────────────────────────── */
-  certifications: [
-    {
-      name: "Adobe Experience Manager Sites Architect",
-      issuer: "Adobe",
-      year: "",
-      icon: "🏛️",
-    },
-    {
-      name: "Adobe Experience Platform Expert",
-      issuer: "Adobe",
-      year: "",
-      icon: "📊",
-    },
-    {
-      name: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      year: "",
-      icon: "☁️",
-    },
-    {
-      name: "Google Cloud Professional Architect",
-      issuer: "Google",
-      year: "",
-      icon: "🌐",
-    },
-    // Add more certifications as needed
-  ],
+  memberships: {
+    fellow: [
+      "Soft Computing Research Society",
+      "IETE",
+      "BCS",
+    ],
+    seniorMember: [
+      "IEEE",
+    ],
+  },
 
   /* ────────────────────────────────────────────────────────────────────────
-     AWARDS & RECOGNITION
-     Add your actual awards here.
+     JUDGING & PEER REVIEW (from EB1A PDF)
      ──────────────────────────────────────────────────────────────────────── */
-  awards: [
-    {
-      name: "Top Technology Voice",
-      organization: "LinkedIn",
-      year: "2024",
-      description: "Recognized among top voices in technology leadership on LinkedIn.",
-      icon: "🏆",
-    },
-    {
-      name: "Independent Researcher — IEEE",
-      organization: "IEEE",
-      year: "2024",
-      description: "Verified researcher with IEEE.org email and published works in AI, MarTech, and Digital Customer Experience.",
-      icon: "🔬",
-    },
-    // Add more awards as needed
+  judging: {
+    awards: [
+      { name: "Globee Awards Business", icon: "🏆" },
+      { name: "Globee Awards Customer Excellence", icon: "🏆" },
+      { name: "Globee Awards Technology", icon: "🏆" },
+    ],
+    hackathons: [
+      { name: "Judge — Devpost (4 hackathons)", icon: "💻" },
+      { name: "Judge at HackHarvard, Harvard University, Cambridge — 2025", icon: "🎓" },
+    ],
+    peerReview: [
+      "2 Q1 Journal articles (Editors of Method X)",
+      "2 Google Scholarly article journals (IJGIS)",
+      "15 Conference papers including ICCTWC, INCSST, and Emerging in Computing Technologies",
+    ],
+    sessionChair: [
+      "International Conference of Emerging Technology",
+    ],
+    bookReview: [
+      "Manning Publishers — 2 Books: Dr. Harvey and the Eight Fallacies and Grokking AI Applications",
+    ],
+  },
+
+  /* ────────────────────────────────────────────────────────────────────────
+     MENTORING (from EB1A PDF)
+     ──────────────────────────────────────────────────────────────────────── */
+  mentoring: [
+    { name: "ADP Top Mentor", description: "Recognized as a top mentor on ADPList platform, providing guidance on technology leadership and career development.", icon: "⭐" },
+    { name: "HackHarvard Mentor 2024", description: "Mentored student teams at HackHarvard hackathon at Harvard University, Cambridge.", icon: "🎓" },
   ],
 
   /* ────────────────────────────────────────────────────────────────────────
